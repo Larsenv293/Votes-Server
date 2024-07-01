@@ -48,8 +48,7 @@ func main() {
 }
 
 func handleVote(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Connection", "keep-alive")
-	
+	fmt.Println("a")
 	wiiNumber := convertToUint(w, r.URL.Query().Get("wiiNo"))
 	number := nwc24.LoadWiiNumber(wiiNumber)
 	if !number.CheckWiiNumber() {
@@ -73,8 +72,6 @@ func handleVote(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleSuggestion(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Connection", "keep-alive")
-	
 	err := r.ParseForm()
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
